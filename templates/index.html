@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <div class="container">
+        <div class="signup">
+        <h1>Login and Registration</h1>
+        <h2>Register here!</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <p>{{message}}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+        <form action="/create" method="post">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name">
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+            <label for="confirm">Confirm Password:</label>
+            <input type="password" name="confirm">
+            <input type="submit" value="Register">
+        </form>
+      </div>
+      <div class="login">
+          <h2>Login here!</h2>
+          <form action="/login" method="post">
+          <label for="email">Email</label>
+          <input type="text" name="email">
+          <label for="password">Password:</label>
+          <input type="password" name="password">
+          <input type="submit" value="Login">
+          </form>
+      </div>
+       
+    </div>
+    
+</body>
+</html>
